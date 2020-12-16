@@ -137,9 +137,9 @@ end
 ### Object Interface
 ###
 
-function h5o_get_info(loc_id)
+function h5o_get_info(loc_id, fields)
     oinfo = Ref{H5O_info_t}()
-    h5o_get_info(loc_id, oinfo)
+    h5o_get_info(loc_id, oinfo, fields)
     return oinfo[]
 end
 
