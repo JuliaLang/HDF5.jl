@@ -3,6 +3,8 @@
 # For instance, many property getters return values through pointer output arguments,
 # so the methods here handle making the appropriate `Ref`s and return them (as tuples).
 
+const H5F_LIBVER_LATEST = _libhdf5_build_ver >= v"1.12" ? H5F_LIBVER_V112 : H5F_LIBVER_V110
+
 ###
 ### HDF5 General library functions
 ###
@@ -484,6 +486,10 @@ function h5t_get_tag(type_id)
     h5_free_memory(pc)
     return s
 end
+
+h5t_get_native_type(type_id) =
+    h5t_get_native_type(type_id, H5T_DIR_ASCEND)
+
 
 ###
 ### Optimized Functions Interface
